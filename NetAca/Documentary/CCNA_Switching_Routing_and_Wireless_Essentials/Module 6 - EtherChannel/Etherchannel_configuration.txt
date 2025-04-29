@@ -1,0 +1,11 @@
+//Showing EtherChannel
+show etherchannel
+
+//Displays the general statu of the port channel interface
+show interfaces port-channel
+
+show etherchannel summary
+
+show etherchanel portchannel
+
+show interfaces etherchannel
