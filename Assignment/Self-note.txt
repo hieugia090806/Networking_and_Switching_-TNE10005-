@@ -1,0 +1,85 @@
+1. Hostsnames on all switches and routers
+- For switch: ena -> config t -> hostname.... -> end
+- For router: ena -> config t -> hostname.... -> end
+
+2. MOTD for all devices (for both switches and routers)
+ena -> config t -> banner motd +********************
+-> *******************
+-> ******.......******
+-> *******************+
+
+3. Configure SSS
+ip domain-name ccna.lab
+crypto key generate rsa general-keys modulus 1024
+username labuser privilege 15 secret labpassword
+
+line vty 0 15
+transport input ssh
+login local
+end
+
+Caculate the ip address
+VLAN 10: 172.16.20.0/23
+-> Class B: 2^7 (128)
+Host portion: 512 subnets (2^9)/256 = 2
+172.16.20.0 - 21.255/25 (32-7)
+=> PC-A: 172.16.21.254
+
+VLAN 20: 172.16.16.0/22
+class B: 2^6 (64)
+Host portion: 2^10 (1024 subnets)/256 = 4
+172.16.16.0 - 19.255/26 (32-6)
+
+VLAN 99: 192.168.99.128/27
+class C: 255.255.255.224
+192.168.99.128 - 
+4. Description
+int g0/0/1
+no shut
+
+int g0/0/1.10
+descitpion ...
+encapsulation dot1Q 10
+ip address 172.16.20.1 255.255.254.0
+
+int g0/0/1.20
+descitpion ...
+encapsulation dot1Q 20
+ip address 172.16.16.1 255.255.252.0
+
+int g0/0/1.99
+descitpion ...
+encapsulation dot1Q 99
+ip address 192.168.99.129 255.255.255.224
+
+int lo0
+ip address 203.122.111.3 255.255.255.240
+
+5.  Place PC_A on VLAN 10 and PC_B on VLAN 20
+- ATC328-Sw: ena -> config t -> int gi1/0/7 -> switchport mode access -> switchport access vlan 10 -> end
+- ATC329_Sw: ena -> config t -> int gi1/0/24 -> switchport mode access -> switchport access vlan 20 -> end
+
+6. Configure ATC_Router as router-on-a-stick
+7. Configure Loopback 0 on the ATC router: 203.122.111.3/28
+int g0/0/1
+no shut
+
+int g0/0/1.10
+descitpion ...
+encapsulation dot1Q 10
+ip address 172.16.20.1 255.255.254.0
+
+int g0/0/1.20
+descitpion ...
+encapsulation dot1Q 20
+ip address 172.16.16.1 255.255.252.0
+
+int g0/0/1.99
+descitpion ...
+encapsulation dot1Q 99
+ip address 192.168.99.129 255.255.255.224
+
+int lo0
+ip address 203.122.111.3 255.255.255.240
+
+copy running-config startup-config
