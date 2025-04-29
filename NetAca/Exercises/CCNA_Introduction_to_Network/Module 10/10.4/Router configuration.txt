@@ -1,0 +1,2 @@
+For showing all interfaces: show interfacese
+For showing Serial 0/0/0: show interfaces Serial 0/0/0
