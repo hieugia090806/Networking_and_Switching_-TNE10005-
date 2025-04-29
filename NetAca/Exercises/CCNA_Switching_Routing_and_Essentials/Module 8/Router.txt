@@ -1,0 +1,18 @@
+ena
+config t
+hostname
+no ip domain-lookup
+enable secret class
+line console 0
+password cisco
+login
+exit
+line vty 0 15
+password cisco
+login
+exit
+banner motd
+service password-encryption
+ipv6 unicast-routing
+end
+wriet memory

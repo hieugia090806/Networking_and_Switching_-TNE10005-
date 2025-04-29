@@ -1,0 +1,27 @@
+enable
+configure terminal
+hostname <your_switch_name>
+no ip domain-lookup
+enable secret class
+line console 0
+password cisco
+login
+exit
+line vty 0 15
+password cisco
+login
+exit
+service password-encryption
+banner motd #
+*****************************************************
+*** WARNING: Unauthorized access is prohibited! ***
+*****************************************************
+#
+interface <unused_port_1>
+shutdown
+exit
+interface <unused_port_2>
+shutdown
+exit
+! ... repeat for all unused ports ...
+copy running-config startup-config 
