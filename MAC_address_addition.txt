@@ -1,0 +1,21 @@
+Here are the main key points from the video on MAC addresses:
+
+Definition: MAC stands for Media Access Control, and it is a unique identifier assigned to a network interface card (NIC).
+Physical Address: Unlike IP addresses, which can change, MAC addresses are considered physical addresses, permanently assigned by the manufacturer.
+Structure: A MAC address is 48 bits long (6 bytes), divided into two sections: the first 24 bits identify the vendor (Organizationally Unique Identifier), and the last 24 bits are a unique value assigned by the vendor s .
+
+Types of MAC Addresses:
+Unicast: A unique MAC address for a specific device.
+Multicast: A MAC address used for applications or protocols that only certain devices will listen to.
+Broadcast: A MAC address that sends data to all devices on a network, represented as all F's s .
+
+Display Formats: MAC addresses can be displayed in different formats, such as:
+Colon-separated (Linux/Apple)
+Dash-separated (Microsoft)
+Grouped in fours (Cisco) s .
+
+Communication Layers: MAC addresses are used for local communication (Layer 2), while IP addresses are used for global communication (Layer 3) s .
+Checking MAC Address: On Windows, you can check your MAC address by using the command ipconfig /all in the command prompt or PowerShell s .
+Do any of these points resonate with your current studies or interests in coding?
+
+
